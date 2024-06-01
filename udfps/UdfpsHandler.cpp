@@ -25,7 +25,6 @@
 #define SELECT_TOUCH_ID 3
 #define SET_CUR_VALUE 0
 
-#define Touch_Fod_Enable 10
 #define THP_FOD_DOWNUP_CTL 1001
 
 #define COMMAND_NIT 10
@@ -35,9 +34,6 @@
 #define COMMAND_FOD_PRESS_STATUS 1
 #define PARAM_FOD_PRESSED 1
 #define PARAM_FOD_RELEASED 0
-
-#define FOD_STATUS_OFF 0
-#define FOD_STATUS_ON 1
 
 #define TOUCH_DEV_PATH "/dev/xiaomi-touch"
 #define TOUCH_MAGIC 0x54
@@ -245,15 +241,6 @@ class XiaomiOnyxUdfpsHandler : public UdfpsHandler {
             default:
                 break;
         }
-
-        /* vendorCode
-         * 21: waiting for finger
-         * 22: finger down
-         * 23: finger up
-         */
-        if (vendorCode == 21) {
-            setFodStatus(FOD_STATUS_ON);
-        }
     }
 
     void cancel() {
@@ -264,15 +251,6 @@ class XiaomiOnyxUdfpsHandler : public UdfpsHandler {
     fingerprint_device_t* mDevice;
     android::base::unique_fd touch_fd_;
     android::base::unique_fd disp_fd_;
-
-    void setFodStatus(int value) {
-        ioctl(touch_fd_.get(), TOUCH_IOC_SELECT_TOUCH_ID, MI_DISP_PRIMARY);
-        touch_base data = {
-            .mode = Touch_Fod_Enable,
-            .data_buf = {value},
-        };
-        ioctl(touch_fd_.get(), TOUCH_IOC_COMMON_DATA, &data);
-    }
 
     void setFingerDown(bool pressed) {
         ioctl(touch_fd_.get(), TOUCH_IOC_SELECT_TOUCH_ID, MI_DISP_PRIMARY);
