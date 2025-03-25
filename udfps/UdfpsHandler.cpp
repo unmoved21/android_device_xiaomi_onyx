@@ -33,7 +33,7 @@ using ::aidl::android::hardware::biometrics::fingerprint::AcquiredInfo;
 
 namespace {
 
-static disp_event_resp* parseDispEvent(int fd) {
+static std::shared_ptr<disp_event_resp> parseDispEvent(int fd) {
     disp_event header;
     ssize_t headerSize = read(fd, &header, sizeof(header));
     if (headerSize < sizeof(header)) {
@@ -41,8 +41,12 @@ static disp_event_resp* parseDispEvent(int fd) {
         return nullptr;
     }
 
-    struct disp_event_resp* response =
-            reinterpret_cast<struct disp_event_resp*>(malloc(header.length));
+    std::shared_ptr<disp_event_resp> response(static_cast<disp_event_resp*>(malloc(header.length)),
+                                              free);
+    if (!response) {
+        LOG(ERROR) << "failed to allocate memory for display event response";
+        return nullptr;
+    }
     response->base = header;
 
     int dataLength = response->base.length - sizeof(response->base);
@@ -104,8 +108,8 @@ class XiaomiOnyxUdfpsHandler : public UdfpsHandler {
                     continue;
                 }
 
-                struct disp_event_resp* response = parseDispEvent(fd);
-                if (response == nullptr) {
+                std::shared_ptr<disp_event_resp> response = parseDispEvent(fd.get());
+                if (!response) {
                     continue;
                 }
 
