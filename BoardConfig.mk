@@ -83,10 +83,10 @@ BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 
 BOARD_USES_QCOM_MERGE_DTBS_SCRIPT := true
 
-TARGET_KERNEL_ADDITIONAL_FLAGS := TARGET_PRODUCT=$(PRODUCT_DEVICE)
-TARGET_KERNEL_SOURCE := kernel/xiaomi/sm8735
+TARGET_KERNEL_SOURCE := kernel/xiaomi/onyx
 TARGET_KERNEL_CONFIG := \
     gki_defconfig \
+    vendor/custom.config \
     vendor/sun_perf.config \
     vendor/onyx_perf.config \
 
@@ -125,7 +125,7 @@ BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(first_stage_modules) $(se
 BOOT_KERNEL_MODULES := $(first_stage_modules) $(second_stage_modules)
 SYSTEM_KERNEL_MODULES := $(gki_modules) $(kunit_modules)
 
-TARGET_KERNEL_EXT_MODULE_ROOT := kernel/xiaomi/sm8735-modules
+TARGET_KERNEL_EXT_MODULE_ROOT := kernel/xiaomi/onyx-modules
 TARGET_KERNEL_EXT_MODULES := \
     qcom/opensource/mmrm-driver \
     qcom/opensource/mm-drivers/hw_fence \
