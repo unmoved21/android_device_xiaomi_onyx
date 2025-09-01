@@ -266,6 +266,7 @@ PRODUCT_PACKAGES += \
     LineageDialerOverlayOnyx \
     LineageSDKOverlayOnyx \
     LineageSettingsOverlayOnyx \
+    NfcOverlayOnyx \
     SettingsOverlayOnyx \
     SettingsProviderOverlayOnyx \
     SettingsProviderOverlayOnyxCN \
