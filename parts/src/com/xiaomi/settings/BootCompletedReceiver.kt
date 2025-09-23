@@ -15,6 +15,7 @@ import android.util.Log
 import android.view.Display
 import android.view.Display.HdrCapabilities
 import com.xiaomi.settings.display.RefreshRateService
+import com.xiaomi.settings.display.ColorService
 import com.xiaomi.settings.touch.TouchReportRateService;
 
 /** Everything begins at boot. */
@@ -39,6 +40,9 @@ class BootCompletedReceiver : BroadcastReceiver() {
     private fun onLockedBootCompleted(context: Context) {
         // Display
         context.startServiceAsUser(Intent(context, RefreshRateService::class.java), UserHandle.CURRENT)
+
+        // Display
+        ColorService.startService(context)
 
         // Touch
         TouchReportRateService.startService(context)
