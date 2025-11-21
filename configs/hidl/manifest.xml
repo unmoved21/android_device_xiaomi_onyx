@@ -8,10 +8,6 @@
         <fqname>ISecureElement/eSE1</fqname>
     </hal>
     <hal format="aidl">
-        <name>vendor.qti.sla.service</name>
-        <fqname>ISlaAIDLService/default</fqname>
-    </hal>
-    <hal format="aidl">
         <name>vendor.xiaomi.hardware.fx.tunnel</name>
         <version>1</version>
         <fqname>IMiFxTunnel/default</fqname>

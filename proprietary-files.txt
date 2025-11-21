@@ -3432,14 +3432,6 @@ vendor/lib64/libGPQeSE.so
 vendor/lib64/libstnfc-streset.so
 vendor/lib64/vendor.xiaomi.hardware.aidl.mtdservice-V1-ndk_platform.so
 
-# SLA
-vendor/bin/hw/vendor.qti.sla.service@2.0-service
-vendor/bin/slad
-vendor/etc/init/slad.rc
-vendor/etc/init/vendor.qti.sla.service@2.0-service.rc
-vendor/etc/sla/slad.conf
-vendor/lib64/vendor.qti.sla.service-V1-ndk.so
-
 # SMC Invoke
 vendor/bin/hlosminkdaemon
 vendor/bin/hw/vendor.qti.hardware.minkipcbinder@1.0-service
