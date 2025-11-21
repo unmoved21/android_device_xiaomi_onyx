@@ -7,20 +7,6 @@
         </interface>
     </hal>
     <hal format="aidl" optional="true">
-        <name>vendor.xiaomi.aidl.minet</name>
-        <interface>
-            <name>IMiNetAIDLService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.xiaomi.aidl.miwill</name>
-        <interface>
-            <name>IMiwillAIDLService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
         <name>android.hardware.media.c2</name>
         <interface>
             <name>IComponentStore</name>
