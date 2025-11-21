@@ -104,9 +104,6 @@
 # MliPay
 /(odm|vendor/odm|system/vendor)/bin/mlipayd u:object_r:hal_mlipay_default_exec:s0
 
-# NFC
-/(odm|vendor/odm)/bin/hw/android\.hardware\.nqnfc-service\.nxp u:object_r:hal_nfc_default_exec:s0
-
 # QRTR
 /(vendor|system/vendor)/bin/qrtr-lookup u:object_r:vendor_qrtr_exec:s0
 
