@@ -5,6 +5,8 @@
 #
 
 from extract_utils.fixups_blob import (
+    BlobFixupCtx,
+    File,
     blob_fixup,
     blob_fixups_user_type,
 )
@@ -16,6 +18,12 @@ from extract_utils.fixups_lib import (
 from extract_utils.main import (
     ExtractUtils,
     ExtractUtilsModule,
+)
+from extract_utils.tools import (
+    llvm_objdump_path,
+)
+from extract_utils.utils import (
+    run_cmd,
 )
 
 namespace_imports = [
@@ -56,6 +64,32 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.qccvndhal_aidl-V1-ndk',
     ): lib_fixup_vendor_suffix,
 }
+
+def blob_fixup_graphic_buffer_size(
+    ctx: BlobFixupCtx,
+    file: File,
+    file_path: str,
+    disassemble_symbols: [str],
+    *args,
+    **kwargs,
+):
+    for line in run_cmd(
+        [
+            llvm_objdump_path,
+            f'--disassemble-symbols={",".join(disassemble_symbols)}',
+            file_path,
+        ]
+    ).splitlines():
+        line = line.split(maxsplit=5)
+        if len(line) != 6:
+            continue
+
+        # The size of GraphicBuffer changed from 0x100 to 0xd30
+        offset, _, instruction, register, value, _ = line
+        if instruction == 'mov' and register[:-1] == 'w0' and value == '#0x100':
+            with open(file_path, 'rb+') as f:
+                f.seek(int(offset[:-1], 16))
+                f.write(b'\x00\xa6\x81\x52')  # AArch64 mov w0, #0xd30
 
 blob_fixups: blob_fixups_user_type = {
     'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl': blob_fixup()
@@ -126,7 +160,6 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libcamxods.so',
         'vendor/lib64/liblearningmodule.so',
         'vendor/lib64/libmicamera_aidl_provider.so',
-        'vendor/lib64/libmicamera_hal_core.so',
         'vendor/lib64/libpowercore.so',
         'vendor/lib64/libpsmoptfeature.so',
         'vendor/lib64/libsdmclient.so',
@@ -194,6 +227,87 @@ blob_fixups: blob_fixups_user_type = {
         'odm/lib64/camera/plugins/com.xiaomi.plugin.jpegrAggr.so'
     ): blob_fixup()
         .replace_needed('libultrahdr.so', 'libultrahdr_prebuilt.so'),
+    'odm/lib64/camera/components/com.mi.node.tsskinbeautifier.so': blob_fixup()
+        .call(
+            blob_fixup_graphic_buffer_size,
+            [
+                'ChiNodeEntry',
+            ],
+        ),
+
+    'odm/lib64/camera/plugins/com.xiaomi.plugin.beautydeformation.so': blob_fixup()
+        .call(
+            blob_fixup_graphic_buffer_size,
+            [
+                '_ZN23BeautyDeformationPlugin13processBufferEP11ImageParamsS1_S1_NSt3__110shared_ptrI10MiMetadataEES1_S1_',
+            ],
+        ),
+
+    'odm/lib64/camera/plugins/com.xiaomi.plugin.filter.so': blob_fixup()
+        .call(
+            blob_fixup_graphic_buffer_size,
+            [
+                '_ZN12FilterPlugin14processRequestEP18ProcessRequestInfo',
+            ],
+        ),
+
+    'odm/lib64/camera/plugins/com.xiaomi.plugin.skinbeautifierpreview.so': blob_fixup()
+        .call(
+            blob_fixup_graphic_buffer_size,
+            [
+                '_ZN27SkinBeautifierPreviewPlugin13processBufferEP11ImageParamsS1_NSt3__110shared_ptrI10MiMetadataEEP18ProcessRequestInfo',
+            ],
+        ),
+
+    'odm/lib64/camera/plugins/com.xiaomi.plugin.tsskinbeautifier.so': blob_fixup()
+        .call(
+            blob_fixup_graphic_buffer_size,
+            [
+                '_ZN20SkinBeautifierPlugin13processBufferEP11ImageParamsS1_NSt3__110shared_ptrI10MiMetadataEES1_S1_',
+            ],
+        ),
+
+    'vendor/lib64/libcom.xiaomi.grallocutils.so': blob_fixup()
+        .call(
+            blob_fixup_graphic_buffer_size,
+            [
+                '_Z21allocateGraphicBufferjjim',
+                '_Z29createGraphicBufferFromHandlejjimjPK13native_handle',
+                '_ZN12GrallocUtils19createGrallocBufferEjjimjPK13native_handleP16GrallocBufHandle',
+            ],
+        ),
+
+    'vendor/lib64/libcom.xiaomi.mawutils.so': blob_fixup()
+        .call(
+            blob_fixup_graphic_buffer_size,
+            [
+                '_ZN18MAWBufferAllocator18AllocGraphicBufferEjjijPPcRi',
+            ],
+        ),
+
+    'vendor/lib64/libgpu_tonemapper.so': blob_fixup()
+        .call(
+            blob_fixup_graphic_buffer_size,
+            [
+                '_ZN15EGLImageWrapper4wrapEPKv',
+            ],
+        ),
+
+    'vendor/lib64/libmicamera_hal_core.so': blob_fixup()
+        .replace_needed(
+            'libtinyxml2.so',
+            'libtinyxml2-v34.so',
+        )
+        .call(
+            blob_fixup_graphic_buffer_size,
+            [
+                '_ZN5mihal11ImageBufferC2EjjimNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE',
+                '_ZN5mihal11ImageBufferC2EjjimPK13native_handle',
+                '_ZN5mihal7SessionC2ERKNS0_10CreateInfoE',
+                '_ZN5mihal12StreamWraper14requestBuffersEjRNSt3__16vectorIPNS_18StreamBufferWraperENS1_9allocatorIS4_EEEE',
+                '_ZThn8_N5mihal12VendorCamera19getStreamByStreamIdEi',
+            ],
+        ),
     (
           'vendor/lib64/soundfx/liblvacfsprocessingaidl.so',
           'vendor/lib64/soundfx/libdlbvolaidl.so',
