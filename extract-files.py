@@ -125,6 +125,12 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .replace_needed('libaudioroute.so', 'libaudioroute-v34.so'),
     (
+        'vendor/lib64/libcapiv2uvvendor.so',
+        'vendor/lib64/liblistensoundmodel2vendor.so',
+        'vendor/lib64/libVoiceSdk.so',
+    ): blob_fixup()
+        .replace_needed('libtensorflowlite_c.so', 'libtensorflowlite_c_vendor.so'),
+    (
         'odm/bin/hw/vendor.xiaomi.hw.touchfeature-service',
         'odm/lib64/hw/displayfeature.default.so',
         'odm/lib64/libadaptivehdr.so',
