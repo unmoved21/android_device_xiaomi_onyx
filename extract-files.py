@@ -61,6 +61,9 @@ blob_fixups: blob_fixups_user_type = {
     'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl': blob_fixup()
         .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V7-ndk.so')
         .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
+    'odm/lib64/hw/displayfeature.default.so': blob_fixup()
+        .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so')
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
     'system_ext/etc/vintf/manifest/vendor.qti.qesdsys.service.xml': blob_fixup()
         .regex_replace(r'(?s)^.*?(?=<manifest)', ''),
     'system_ext/lib64/libwfdmmsrc_system.so': blob_fixup()
@@ -105,6 +108,43 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .regex_replace('xml=version', 'xml version'),
     (
+'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.anchor.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlineawbideal.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlineb2y.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlineformatconvertor.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlinehdrraw2y.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlineheic.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlinei2y.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlinejpeg.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlinemfnr.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlinemlawb.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlinetintless.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlinetintlesshdr.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlineyuvreprocess.so',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.offlineyuvsplit.so',
+        'odm/lib64/libmiXmlParser.so',
+        'vendor/bin/hw/vendor.qti.camera.provider-service_64',
+        'vendor/bin/hw/vendor.qti.hardware.display.composer-service',
+        'vendor/bin/poweropt-service',
+        'vendor/lib64/hw/libaudioeffecthal.qti.so',
+        'vendor/lib64/libaodoptfeature.so',
+        'vendor/lib64/libapengine.so',
+        'vendor/lib64/libaudiocloudctrl.so',
+        'vendor/lib64/libcamxcoreutils.so',
+        'vendor/lib64/libcamxods.so',
+        'vendor/lib64/liblearningmodule.so',
+        'vendor/lib64/libmicamera_aidl_provider.so',
+        'vendor/lib64/libmicamera_hal_core.so',
+        'vendor/lib64/libpowercore.so',
+        'vendor/lib64/libpsmoptfeature.so',
+        'vendor/lib64/libsdmclient.so',
+        'vendor/lib64/libsimulation.so',
+        'vendor/lib64/libstandbyfeature.so',
+        'vendor/lib64/soundfx/libquasar.so',
+    ): blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
+    (
         'odm/bin/hw/android.hardware.security.keymint-service.strongbox-nxp',
         'odm/lib64/libjc_keymint-nxp.so',
         'odm/lib64/libjc_keymint_transport_nxp.so',
@@ -132,7 +172,6 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libtensorflowlite_c.so', 'libtensorflowlite_c_vendor.so'),
     (
         'odm/bin/hw/vendor.xiaomi.hw.touchfeature-service',
-        'odm/lib64/hw/displayfeature.default.so',
         'odm/lib64/libadaptivehdr.so',
         'odm/lib64/libcolortempmode.so',
         'odm/lib64/libdither.so',
