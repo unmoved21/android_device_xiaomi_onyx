@@ -112,7 +112,7 @@ vendor.display.enable_hdr10_gpu_target=0
 vendor.display.force_tonemapping=1
 vendor.display.idle_time=0
 vendor.display.support_function_timer=1
-vendor.display.support_video_mode_30hz_aod=0
+vendor.display.support_video_mode_30hz_aod=1
 
 # QC Value Addons
 ro.vendor.qti.va_odm.support=1
