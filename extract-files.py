@@ -76,20 +76,13 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace(r'<library>\s*<name>libdolbyclstc[\s\S]*?</library>', ''),
     'vendor/etc/sensors/hals.conf': blob_fixup()
         .regex_replace('.*vl53l8.*\n?', ''),
-    'vendor/lib64/hw/libaudiocorehal.qti.so': blob_fixup()
-        .replace_needed('android.hardware.audio.core.sounddose-V1-ndk.so', 'android.hardware.audio.core.sounddose-V2-ndk.so')
-        .replace_needed('android.hardware.audio.common-V1-ndk.so', 'android.hardware.audio.common-V3-ndk.so')
-        .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
     'vendor/lib64/libaudioserviceexampleimpl.so': blob_fixup()
         .add_needed('libaudioutils_shim.so')
-        .replace_needed('android.media.audio.common.types-V4-ndk.so', 'android.media.audio.common.types-V3-ndk.so')
         .replace_needed('android.hardware.bluetooth.audio-impl.so', 'android.hardware.bluetooth.audio-impl_prebuilt.so')
         .replace_needed('libbluetooth_audio_session_aidl.so', 'libbluetooth_audio_session_aidl_prebuilt.so')
         .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
     'vendor/lib64/android.hardware.bluetooth.audio-impl_prebuilt.so': blob_fixup()
         .replace_needed('libbluetooth_audio_session_aidl.so', 'libbluetooth_audio_session_aidl_prebuilt.so'),
-    'vendor/lib64/libaudio_aidl_conversion_common_ndk_prebuilt.so': blob_fixup()
-        .replace_needed('android.media.audio.common.types-V4-ndk.so', 'android.media.audio.common.types-V3-ndk.so'),
     'vendor/lib64/libcameraopt.so': blob_fixup()
         .add_needed('libprocessgroup_shim.so'),
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
@@ -185,6 +178,11 @@ blob_fixups: blob_fixups_user_type = {
      ): blob_fixup()
         .replace_needed('android.media.audio.common.types-V4-ndk.so', 'android.media.audio.common.types-V3-ndk.so')
         .replace_needed('android.hardware.audio.effect-V2-ndk.so', 'android.hardware.audio.effect-V3-ndk.so'),
+    (
+        'vendor/lib64/soundfx/libbundleaidl.so',
+        'vendor/lib64/libaudioserviceexampleimpl.so',
+    ): blob_fixup()
+        .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
     (
         'vendor/lib64/hw/com.qti.chi.override.so',
         'vendor/lib64/camera/components/com.qti.node.dewarp.so',
