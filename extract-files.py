@@ -72,10 +72,6 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libbinder_shim.so')
         .add_needed('libinput_shim.so')
         .remove_needed('android.hidl.base@1.0.so'),
-    'vendor/bin/hw/vendor.xiaomi.hardware.vibratorfeature.service': blob_fixup()
-        .replace_needed('android.hardware.vibrator-V1-ndk_platform.so', 'android.hardware.vibrator-V1-ndk_prebuilt.so'),
-    'vendor/etc/init/vendor.xiaomi.hardware.vibratorfeature.service.rc': blob_fixup()
-        .regex_replace('odm/bin', 'vendor/bin'),
     'vendor/lib64/hw/libaudiocorehal.qti.so': blob_fixup()
         .replace_needed('android.hardware.audio.core.sounddose-V1-ndk.so', 'android.hardware.audio.core.sounddose-V2-ndk.so')
         .replace_needed('android.hardware.audio.common-V1-ndk.so', 'android.hardware.audio.common-V3-ndk.so')
