@@ -187,11 +187,6 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
     (
-        'vendor/etc/media_codecs_tuna_v0.xml',
-        'vendor/etc/media_codecs_tuna_v0_without_dvenc.xml',
-    ): blob_fixup()
-        .regex_replace('.*media_codecs_(google_audio|google_c2|google_telephony|google_video|vendor_audio).*\n', ''),
-    (
           'vendor/lib64/soundfx/liblvacfsprocessingaidl.so',
           'vendor/lib64/soundfx/libdlbvolaidl.so',
      ): blob_fixup()
