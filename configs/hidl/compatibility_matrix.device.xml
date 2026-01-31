@@ -7,6 +7,14 @@
         </interface>
     </hal>
     <hal format="aidl" optional="true">
+        <name>android.hardware.security.secretkeeper</name>
+        <interface>
+            <name>ISecretkeeper</name>
+            <instance>default</instance>
+            <instance>nonsecure</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
         <name>android.hardware.vibrator</name>
         <interface>
             <name>IVibrator</name>
@@ -32,6 +40,14 @@
         <version>1-2</version>
         <interface>
             <name>IQasr</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.qesdsys</name>
+        <version>1-4</version>
+        <interface>
+            <name>IQesdSys</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -367,6 +383,14 @@
         <name>vendor.xiaomi.modem.qms</name>
         <interface>
             <name>IMiQms</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.seaaudio</name>
+        <version>1</version>
+        <interface>
+            <name>ISeaAudio</name>
             <instance>default</instance>
         </interface>
     </hal>

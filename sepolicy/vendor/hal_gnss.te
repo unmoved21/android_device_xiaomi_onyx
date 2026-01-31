@@ -1,1 +1,15 @@
-get_prop(vendor_hal_gnss_qti, vendor_sensors_prop)
+binder_use(hal_gnss_default)
+hal_server_domain(hal_gnss_default, hal_gnss)
+init_daemon_domain(hal_gnss_default)
+vndbinder_use(hal_gnss_default)
+
+get_prop(hal_gnss_default, vendor_sensors_prop)
+
+allow hal_gnss_client hal_gnss_server:binder { call transfer };
+allow hal_gnss_client hal_gnss_server:fd *;
+allow hal_gnss_client hal_gnss_service:service_manager find;
+allow hal_gnss_default hal_gnss_service:service_manager { add find };
+allow hal_gnss_default vendor_location_socket:dir getattr;
+allow hal_gnss_default vendor_qms_service:service_manager find;
+allow hal_gnss_server hal_gnss_client:binder { call transfer };
+allow hal_gnss_server hal_gnss_client:fd *;

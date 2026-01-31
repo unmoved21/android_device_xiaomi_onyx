@@ -196,6 +196,12 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .regex_replace('.*media_codecs_(google_audio|google_c2|google_telephony|google_video|vendor_audio).*\n', ''),
     (
+          'vendor/lib64/soundfx/liblvacfsprocessingaidl.so',
+          'vendor/lib64/soundfx/libdlbvolaidl.so',
+     ): blob_fixup()
+        .replace_needed('android.media.audio.common.types-V4-ndk.so', 'android.media.audio.common.types-V3-ndk.so')
+        .replace_needed('android.hardware.audio.effect-V2-ndk.so', 'android.hardware.audio.effect-V3-ndk.so'),
+    (
         'vendor/lib64/hw/com.qti.chi.override.so',
         'vendor/lib64/camera/components/com.qti.node.dewarp.so',
         'vendor/lib64/libcamximageformatutils.so',

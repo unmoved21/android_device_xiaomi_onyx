@@ -6,7 +6,8 @@ audio.offload.video=true
 media.stagefright.audio.deep=true
 
 # Bluetooth
-bluetooth.device_id.vendor_id=0x001D
+bluetooth.device_id.product_id=0x1200
+bluetooth.device_id.vendor_id=0x038F
 bluetooth.profile.a2dp.source.enabled=true
 bluetooth.profile.avrcp.controller.enabled=false
 bluetooth.profile.avrcp.target.enabled=true
@@ -29,6 +30,12 @@ bluetooth.profile.pan.panu.enabled=true
 bluetooth.profile.pbap.server.enabled=true
 bluetooth.profile.vcp.controller.enabled=false
 
+# Graphics
+persist.sys.enable_parallel_sweep=true
+persist.sys.enhance_vkpipelinecache.enable=true
+persist.sys.migl.sr.mode=2
+
 # RKPD
 remote_provisioning.enable_rkpd=true
 remote_provisioning.hostname=remoteprovisioning.googleapis.com
+remote_provisioning.strongbox.rkp_only=true

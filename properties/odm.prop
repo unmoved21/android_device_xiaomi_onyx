@@ -4,6 +4,8 @@ ro.product.property_source_order=odm,vendor,product,system_ext,system
 # Audio
 audio.spatializer.pose_predictor_type=2
 audio.spatializer.prediction_duration_ms=50
+persist.vendor.audio.ambience_noisy_spl.threshold=80
+persist.vendor.audio.cpuload.threshold=26
 persist.vendor.audio.effectimplenter=dolby
 persist.vendor.audio.fpsop.game.effect.speaker=false
 persist.vendor.audio.fpsop.game.effect.switch=true
@@ -11,8 +13,9 @@ persist.vendor.audio.fpsop.game.effect=true
 persist.vendor.audio.game.effect.version=2
 persist.vendor.audio.induce_crash=false
 persist.vendor.audio.induce_crash_generic=false
-persist.vendor.audio.miExceptionCheck.enable=true
+persist.vendor.audio.mi.perception=9
 persist.vendor.audio.spatializer.enable=false
+persist.vendor.audio.speaker.threshold=120
 persist.vendor.audio.spf_restart=true
 ro.vendor.audio.algorithm.support=Fluence
 ro.vendor.audio.aw.monitor=true
@@ -27,6 +30,8 @@ ro.vendor.audio.meeting.mode.type=2
 ro.vendor.audio.meeting.mode=true
 ro.vendor.audio.onetrack.xiaoai.firstevent.support=false
 ro.vendor.audio.product.sleepmonitor.config=true
+ro.vendor.audio.seaaudio.model=true
+ro.vendor.seaaudio.model=/odm/etc/TcnRecordmodel_8735_w8a16pcq_qnn2_29_0_nhwc.minn
 ro.vendor.audio.sixth.monitor=true
 
 vendor.audio.cpu.sched.cpus=8
@@ -35,11 +40,20 @@ vendor.audio.cpu.sched.cpuset.at=255
 vendor.audio.cpu.sched.cpuset.hb=255
 vendor.audio.cpu.sched.cpuset.he=255
 vendor.audio.cpu.sched.cpuset.hso=255
+vendor.audio.cpu.sched.douyin=31
+vendor.audio.cpu.sched.douyin.cpus=8
+vendor.audio.cpu.sched.douyin.cpuset.af=63
+vendor.audio.cpu.sched.douyin.cpuset.at=63
+vendor.audio.cpu.sched.douyin.cpuset.hb=63
+vendor.audio.cpu.sched.douyin.cpuset.he=63
+vendor.audio.cpu.sched.douyin.cpuset.hso=63
 vendor.audio.cpu.sched.onlyfast=false
 vendor.audio.cpu.sched=31
+vendor.audio.only.douyin.powersave.support=1
 vendor.audio.rt.mode.onlyfast=false
 vendor.audio.rt.mode=55
 vendor.audio.support.16bit.record=true
+vendor.audio.version.v=true
 
 # Battery secret
 persist.vendor.region.charger=default
@@ -48,10 +62,10 @@ persist.vendor.region.charger=default
 ro.bluetooth.finder.supported=true
 
 # Camera
-persist.vendor.camera.cameramind.supported=true
 ro.vendor.dynamiccamera.ability_level=2
 ro.camerax.extensions.enabled=false
 ro.camera.disableJpegR=true
+ro.camera.disableHeicUltraHDR=true
 
 # CIT
 persist.vendor.debug.collision.dfx=true
@@ -77,6 +91,9 @@ ro.vendor.display.update_dbi_by_temperature=true
 ro.vendor.histogram.enable=true
 ro.vendor.localhbm.enable=true
 ro.vendor.sre.enable=true
+
+# F2FS
+persist.sys.stability.f2fsTrackEnable=true
 
 # Graphics
 debug.sf.set_idle_timer_ms=1100
@@ -105,7 +122,7 @@ ro.telephony.default_network=33,33
 persist.vendor.radio.dynamic_sar=1
 
 # Sensor
-persist.vendor.sensors.debug.hal_trigger_ssr=true
+persist.vendor.sensors.debug.hal_trigger_crash=true
 
 # SSR
 persist.vendor.ssr.restart_level=ALL_ENABLE
