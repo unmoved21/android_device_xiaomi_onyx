@@ -2782,9 +2782,6 @@ vendor/lib64/libvideotxr.so
 vendor/lib64/qti.video.utils.videobufferlayout.so
 vendor/lib64/vendor.xiaomi.hardware.videoservice-V7-ndk.so
 
-# Media Config
-vendor/etc/media_codecs_c2_audio.xml
-
 # Mlipay
 odm/bin/mlipayd
 odm/etc/init/vendor.xiaomi.hardware.mlipay-service.rc
