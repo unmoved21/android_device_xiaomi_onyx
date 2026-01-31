@@ -2796,7 +2796,6 @@ vendor/lib64/vendor.xiaomi.hardware.videoservice-V7-ndk.so
 
 # Media Config
 vendor/etc/media_codecs_c2_audio.xml
-vendor/etc/media_codecs_mi_c2_audio.xml
 
 # Mlipay
 odm/bin/mlipayd
