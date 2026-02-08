@@ -196,12 +196,6 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .replace_needed('libultrahdr.so', 'libultrahdr_prebuilt.so'),
     (
-          'vendor/lib64/soundfx/liblvacfsprocessingaidl.so',
-          'vendor/lib64/soundfx/libdlbvolaidl.so',
-     ): blob_fixup()
-        .replace_needed('android.media.audio.common.types-V4-ndk.so', 'android.media.audio.common.types-V3-ndk.so')
-        .replace_needed('android.hardware.audio.effect-V2-ndk.so', 'android.hardware.audio.effect-V3-ndk.so'),
-    (
         'vendor/lib64/hw/android.hardware.bluetooth.audio_sw.so',
         'vendor/lib64/hw/libaudioeffecthal.qti.so',
         'vendor/lib64/libaudio_aidl_conversion_common_ndk_prebuilt.so',
