@@ -2486,13 +2486,6 @@ odm/etc/disp0/mdss_dsi_o10u_42_02_0a_dsc_vid/mi_gc_0.txt
 odm/etc/disp0/mdss_dsi_o10u_42_02_0a_dsc_vid/mi_gc_1.txt
 odm/etc/disp0/mdss_dsi_o10u_42_02_0a_dsc_vid/mi_gc_2.txt
 odm/etc/disp0/mdss_dsi_o10u_42_02_0a_dsc_vid/mi_gc_3.txt
-vendor/etc/display/sm8735p_sr_2x_y1280x720.dlc
-vendor/etc/display/sm8735p_sr_2x_y720x1280.dlc
-vendor/etc/display/sm8735p_sr_3x_y544x960.dlc
-vendor/etc/display/sm8735p_sr_3x_y960x544.dlc
-vendor/etc/display/sm8735p_sr_4x_y544x544.dlc
-vendor/etc/display/sm8735p_sr_5x_y384x640.dlc
-vendor/etc/display/sm8735p_sr_5x_y640x384.dlc
 vendor/etc/display/sm8750_sr_1x_y1280x720.dlc
 vendor/etc/display/sm8750_sr_1x_y544x960.dlc
 vendor/etc/display/sm8750_sr_1x_y720x1280.dlc
