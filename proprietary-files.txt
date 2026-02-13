@@ -2687,10 +2687,6 @@ vendor/lib64/libkeymasterutils.so
 vendor/lib64/libqtikeymaster4.so
 vendor/lib64/libqtikeymint.so
 vendor/lib64/libspcom.so
-vendor/lib64/libspukeymint.so
-vendor/lib64/libspukeymintdeviceutils.so
-vendor/lib64/libspukeymintprovision.so
-vendor/lib64/libspukeymintutils.so
 
 # Micharge
 vendor/bin/hw/vendor.xiaomi.hardware.micharge-service
