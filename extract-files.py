@@ -269,9 +269,6 @@ blob_fixups: blob_fixups_user_type = {
             'for kernel_ver_dir in ${system_dlkm_dir} ${system_dlkm_dir}/*;',
         ),
 
-    'vendor/etc/clstc_config_library.xml': blob_fixup()
-        .regex_replace(r'<library>\s*<name>libdolbyclstc[\s\S]*?</library>', ''),
-
     'vendor/etc/sensors/hals.conf': blob_fixup()
         .regex_replace('.*vl53l8.*\n?', ''),
 
@@ -295,21 +292,16 @@ blob_fixups: blob_fixups_user_type = {
     ),
 
     (
-        'vendor/lib64/hw/android.hardware.bluetooth.audio_sw.so',
-        'vendor/lib64/libaudio_aidl_conversion_common_ndk_prebuilt.so',
-        'vendor/lib64/soundfx/libdownmixaidl.so',
-        'vendor/lib64/soundfx/libdynamicsprocessingaidl.so',
-        'vendor/lib64/soundfx/libloudnessenhanceraidl.so',
-        'vendor/lib64/soundfx/libqcompostprocbundle.so',
-        'vendor/lib64/soundfx/libqcomvisualizer.so',
-        'vendor/lib64/soundfx/libqcomvoiceprocessing.so',
-        'vendor/lib64/soundfx/libreverbaidl.so',
-        'vendor/lib64/soundfx/libvisualizeraidl.so',
-        'vendor/lib64/soundfx/libvolumelistener.so'
+        'vendor/lib64/soundfx/liblvacfsprocessingaidl.so',
+        'vendor/lib64/soundfx/libdlbvolaidl.so',
     ): blob_fixup()
         .replace_needed(
-            'android.media.audio.common.types-V6-ndk.so',
+            'android.media.audio.common.types-V4-ndk.so',
             'android.media.audio.common.types-V3-ndk.so'
+    )
+        .replace_needed(
+            'android.hardware.audio.effect-V2-ndk.so',
+            'android.hardware.audio.effect-V3-ndk.so'
     ),
 
     'vendor/lib64/hw/libaudioeffecthal.qti.so': blob_fixup()
