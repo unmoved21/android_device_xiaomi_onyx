@@ -452,8 +452,6 @@ on post-fs-data
 
 on early-boot
     setprop ro.surface_flinger.supports_background_blur ${vendor.display.supports_background_blur}
-    # Wait (1 second at most) for 'fs_ready' entry to be created
-    wait /sys/kernel/cnss/fs_ready 1
     # Enable WLAN cold boot calibration
     write /sys/kernel/cnss/fs_ready 1
     verity_update_state
