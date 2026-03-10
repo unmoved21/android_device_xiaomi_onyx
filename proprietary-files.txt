@@ -2732,11 +2732,6 @@ vendor/lib64/libqtikeymaster4.so
 vendor/lib64/libqtikeymint.so
 vendor/lib64/libspcom.so
 
-# Micharge
-vendor/bin/hw/vendor.xiaomi.hardware.micharge-service
-vendor/etc/init/vendor.xiaomi.hardware.micharge-service.rc
-vendor/etc/vintf/manifest/vendor.xiaomi.hardware.micharge.xml
-
 # Media
 vendor/bin/hw/android.hardware.media.c2-mi-service
 vendor/bin/hw/vendor.qti.media.c2@1.0-service
