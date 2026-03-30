@@ -184,10 +184,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     xiaomi.system.hypsys.common-service-dummy
 
-# Micharge
-PRODUCT_PACKAGES += \
-    vendor.xiaomi.hardware.micharge-service-dummy
-
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.qti \
@@ -275,6 +271,10 @@ PRODUCT_COPY_FILES += \
 # Memtrack
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service
+
+# Micharge
+PRODUCT_PACKAGES += \
+    vendor.xiaomi.hardware.micharge-service-dummy
 
 # Network
 PRODUCT_COPY_FILES += \
