@@ -97,7 +97,13 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .regex_replace('xml=version', 'xml version'),
     (
-'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl',
+        'odm/firmware/o10u_nova_csot_thp_config.ini',
+        'odm/firmware/o10u_nova_tm_thp_config.ini'
+    ): blob_fixup()
+        .regex_replace('ic_rate_normal=120', 'ic_rate_normal=240')
+        .regex_replace('rate_normal=120', 'rate_normal=480'),
+    (
+        'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl',
         'odm/lib64/camera/plugins/com.xiaomi.plugin.anchor.so',
         'odm/lib64/camera/plugins/com.xiaomi.plugin.offlineawbideal.so',
         'odm/lib64/camera/plugins/com.xiaomi.plugin.offlineb2y.so',
