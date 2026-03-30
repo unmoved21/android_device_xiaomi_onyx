@@ -36,9 +36,30 @@
         </receiver>
 
         <service
+            android:name=".touch.TouchReportRateService"
+            android:permission="TouchReportRateService">
+        </service>
+
+        <service
             android:name=".display.RefreshRateService"
             android:permission="RefreshRateService">
         </service>
+
+        <activity
+            android:name=".touch.TouchSettingsActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:label="@string/touch_title">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.display" />
+            <meta-data
+                android:name="com.android.settings.order"
+                android:value="-10" />
+        </activity>
 
     </application>
 </manifest>
