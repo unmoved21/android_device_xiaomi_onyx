@@ -524,6 +524,10 @@ on boot
     chmod 664 /sys/devices/platform/soc/1d84000.ufshc/ufscld/trigger
     #END Memory_CLD
 
+on property:dev.bootcomplete=1
+    chown system system /sys/class/xm_power/charger/smart_charge/smart_night
+    chmod 0660 /sys/class/xm_power/charger/smart_charge/smart_night
+
 on property:vendor.display.lcd_density=560
    setprop dalvik.vm.heapgrowthlimit 256m
 
