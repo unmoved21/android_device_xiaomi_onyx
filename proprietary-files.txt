@@ -3564,7 +3564,6 @@ odm/lib64/libtouchreport_alg.so
 odm/lib64/libtouchreport_hal.so
 odm/lib64/libtouchreport_sensor.so
 odm/lib64/sensors.touch.detect.so
-vendor/lib64/vendor.xiaomi.hw.touchfeature-V1-ndk.so
 
 # Touchscreen
 odm/firmware/nvt_run_selftest_get_result_data_sample.bat
