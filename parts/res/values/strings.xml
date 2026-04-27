@@ -6,9 +6,4 @@
 <resources>
     <!-- App Name -->
     <string name="app_name">Xiaomi Parts</string>
-
-    <!-- Touch settings -->
-    <string name="touch_title">Touch Sampling Rate</string>
-    <string name="touch_high_sampling_rate_title">High Touch Sampling Rate</string>
-    <string name="touch_high_sampling_rate_footer">Increase touchscreen polling rate</string>
 </resources>

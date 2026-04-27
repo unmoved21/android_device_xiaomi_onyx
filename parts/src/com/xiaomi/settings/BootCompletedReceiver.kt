@@ -16,7 +16,6 @@ import android.view.Display
 import android.view.Display.HdrCapabilities
 import com.xiaomi.settings.display.RefreshRateService
 import com.xiaomi.settings.display.ColorService
-import com.xiaomi.settings.touch.TouchReportRateService;
 
 /** Everything begins at boot. */
 class BootCompletedReceiver : BroadcastReceiver() {
@@ -43,9 +42,6 @@ class BootCompletedReceiver : BroadcastReceiver() {
 
         // Display
         ColorService.startService(context)
-
-        // Touch
-        TouchReportRateService.startService(context)
 
         // Override HDR types to enable Dolby Vision
         val displayManager = context.getSystemService(DisplayManager::class.java)
