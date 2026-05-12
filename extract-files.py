@@ -80,6 +80,8 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
         .add_needed('libcodec2_shim.so')
         .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
+    'vendor/lib64/libqcrilNrVoiceModule.so': blob_fixup()
+        .sig_replace('a1 00 80 52 22', 'a1 00 80 52 02'),
     'vendor/lib64/libspukeymint.so': blob_fixup()
         .replace_needed('android.hardware.security.sharedsecret-V2-ndk.so', 'android.hardware.security.sharedsecret-V1-ndk.so'),
     'vendor/lib64/libspukeymintprovision.so': blob_fixup()
