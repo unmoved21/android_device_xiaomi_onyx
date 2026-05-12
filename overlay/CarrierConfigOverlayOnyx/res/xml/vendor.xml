@@ -113,6 +113,7 @@
         <boolean name="allow_ut_when_wifi_on_bool" value="true" />
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
         <boolean name="vonr_setting_visibility_bool" value="false" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="204" mnc="16">
         <boolean name="carrier_volte_available_bool" value="true" />
@@ -1490,6 +1491,7 @@
             <item value="dun" />
             <item value="supl" />
         </string-array>
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="455" mnc="07">
@@ -1510,6 +1512,7 @@
             <item value="dun" />
             <item value="supl" />
         </string-array>
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="00">
@@ -1635,6 +1638,7 @@
             <item value="1" />
         </int-array>
         <boolean name="allow_hold_call_during_emergency_bool" value="false" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
         <boolean name="carrier_data_channel_supported_bool" value="true" />
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
@@ -1868,6 +1872,7 @@
         <boolean name="disable_supplementary_services_in_airplane_mode_bool" value="true" />
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
         <boolean name="vonr_setting_visibility_bool" value="false" />
+        <boolean name="vonr_enabled_bool" value="true" />
         <boolean name="always_send_plmn_name_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="06">
@@ -1908,6 +1913,7 @@
         <boolean name="carrier_allow_transfer_ims_call_bool" value="false" />
         <boolean name="carrier_video_crs_supported_bool" value="true" />
         <boolean name="allow_hold_call_during_emergency_bool" value="false" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
         <boolean name="carrier_data_channel_supported_bool" value="true" />
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
@@ -2107,6 +2113,7 @@
             <item value="1" />
         </int-array>
         <boolean name="allow_hold_call_during_emergency_bool" value="false" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
         <boolean name="carrier_data_channel_supported_bool" value="true" />
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
@@ -2210,6 +2217,7 @@
         <boolean name="allow_ut_when_wifi_on_bool" value="true" />
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
         <boolean name="vonr_setting_visibility_bool" value="false" />
+        <boolean name="vonr_enabled_bool" value="true" />
         <boolean name="always_send_plmn_name_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="13">
@@ -5511,6 +5519,7 @@
         <int name="config_support_voice_link_scene" value="23" />
         <string name="default_vm_number_string">5500</string>
         <boolean name="voicemail_notification_persistent_bool" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_enhanced_4g_lte_bool" value="false" />
@@ -5544,6 +5553,7 @@
         <int name="config_support_voice_link_scene" value="23" />
         <string name="default_vm_number_string">5500</string>
         <boolean name="voicemail_notification_persistent_bool" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_enhanced_4g_lte_bool" value="false" />
@@ -10696,18 +10706,21 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="carrier_sa_mode_available_bool" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="262" mnc="07">
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="carrier_sa_mode_available_bool" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="262" mnc="11">
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="carrier_sa_mode_available_bool" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <!--德国 DE Vodafone-->
@@ -11082,6 +11095,7 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="carrier_vt_available_bool" value="true" />
         <boolean name="carrier_disable_sa_mode_bool" value="false" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="232" mnc="10">
@@ -11089,6 +11103,7 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="carrier_vt_available_bool" value="true" />
         <boolean name="carrier_disable_sa_mode_bool" value="false" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="232" mnc="14">
@@ -11096,6 +11111,7 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="carrier_vt_available_bool" value="true" />
         <boolean name="carrier_disable_sa_mode_bool" value="false" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <!--奥地利 AT DT/Hot-->
@@ -13395,59 +13411,73 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
     <carrier_config mcc="460" mnc="00">
         <boolean name="config_miui_sms_optimization" value="true" />
         <boolean name="config_miui_sms_sa_fallback_optimization" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="02">
         <boolean name="config_miui_sms_optimization" value="true" />
         <boolean name="config_miui_sms_sa_fallback_optimization" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="04">
         <boolean name="config_miui_sms_optimization" value="true" />
         <boolean name="config_miui_sms_sa_fallback_optimization" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="07">
         <boolean name="config_miui_sms_optimization" value="true" />
         <boolean name="config_miui_sms_sa_fallback_optimization" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="08">
         <boolean name="config_miui_sms_optimization" value="true" />
         <boolean name="config_miui_sms_sa_fallback_optimization" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="01">
         <boolean name="config_miui_sms_optimization" value="true" />
         <boolean name="config_miui_sms_sa_fallback_optimization" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="06">
         <boolean name="config_miui_sms_optimization" value="true" />
         <boolean name="config_miui_sms_sa_fallback_optimization" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="09">
         <boolean name="config_miui_sms_optimization" value="true" />
         <boolean name="config_miui_sms_sa_fallback_optimization" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="03">
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="05">
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="11">
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="12">
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="13">
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="15">
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460">
@@ -13468,12 +13498,14 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
         <boolean name="carrier_sa_mode_available_bool" value="true" />
         <boolean name="carrier_disable_sa_mode_bool" value="false" />
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="424" mnc="3">
         <boolean name="config_show_vonr_icon_in_statusbar" value="true" />
         <boolean name="carrier_sa_mode_available_bool" value="true" />
         <boolean name="carrier_disable_sa_mode_bool" value="false" />
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="257" mnc="1">
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
@@ -13501,6 +13533,7 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
         <boolean name="carrier_sa_mode_available_bool" value="true" />
         <boolean name="carrier_disable_sa_mode_bool" value="false" />
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="454" mnc="0">
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
@@ -13619,6 +13652,7 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
     </carrier_config>
     <carrier_config mcc="419" mnc="2">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="413" mnc="5">
@@ -13670,6 +13704,7 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
         <boolean name="carrier_disable_sa_mode_bool" value="false" />
         <boolean name="carrier_sa_mode_available_bool" value="true" />
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="502" mnc="152">
         <boolean name="carrier_sa_mode_available_bool" value="true" />
@@ -13682,6 +13717,7 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
         <boolean name="carrier_disable_sa_mode_bool" value="false" />
         <boolean name="carrier_sa_mode_available_bool" value="true" />
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
         <boolean name="config_show_vonr_icon_in_statusbar" value="true" />
     </carrier_config>
     <carrier_config mcc="520" mnc="00">
@@ -13696,6 +13732,7 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
     </carrier_config>
     <carrier_config mcc="262" mnc="23">
         <boolean name="carrier_sa_mode_available_bool" value="true" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="452" mnc="4">
@@ -13758,6 +13795,7 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
     </carrier_config>
     <carrier_config mcc="268" mnc="6">
         <boolean name="carrier_disable_sa_mode_bool" value="false" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="268" mnc="2">
@@ -13817,6 +13855,7 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
     <carrier_config mcc="525" mnc="10">
         <boolean name="carrier_sa_mode_available_bool" value="true" />
         <boolean name="carrier_disable_sa_mode_bool" value="false" />
+        <boolean name="vonr_setting_visibility_bool" value="true" />
         <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="429" mnc="2">
@@ -13852,6 +13891,7 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
         <boolean name="config_show_vonr_icon_in_statusbar" value="true" />
         <boolean name="carrier_sa_mode_available_bool" value="true" />
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="234" mnc="87">
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
@@ -13908,69 +13948,91 @@ filtering rules are the same as those in carrier_config*.xml_utils files. This
     </carrier_config>
     <carrier_config mcc="405" mnc="840">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="854">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="855">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="856">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="857">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="858">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="859">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="860">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="861">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="862">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="863">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="864">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="865">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="866">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="867">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="868">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="869">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="870">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="871">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="872">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="873">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="405" mnc="874">
         <boolean name="vonr_setting_visibility_bool" value="true" />
+        <boolean name="vonr_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="515" mnc="2">
         <boolean name="carrier_vt_available_bool" value="true" />
