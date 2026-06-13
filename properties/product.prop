@@ -30,11 +30,6 @@ bluetooth.profile.pan.panu.enabled=true
 bluetooth.profile.pbap.server.enabled=true
 bluetooth.profile.vcp.controller.enabled=false
 
-# Graphics
-persist.sys.enable_parallel_sweep=true
-persist.sys.enhance_vkpipelinecache.enable=true
-persist.sys.migl.sr.mode=2
-
 # RKPD
 remote_provisioning.enable_rkpd=true
 remote_provisioning.hostname=remoteprovisioning.googleapis.com
