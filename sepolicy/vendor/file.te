@@ -38,9 +38,6 @@ type sysfs_migt, fs_type, sysfs_type;
 # Memory
 type procfs_memory, fs_type, proc_type;
 
-# Miev
-type miev_device, dev_type;
-
 # Sensor
 type vendor_aon_vendor_data_file, data_file_type, file_type;
 
