@@ -137,7 +137,7 @@ vendor/lib64/libmisoundsa.so
 vendor/lib64/libpal_net_if.so
 vendor/lib64/libpalclient.so
 vendor/lib64/libqasr.so
-vendor/lib64/libqtigefar.so;DISABLE_DEPS
+vendor/lib64/libqtigefar.so
 vendor/lib64/libspatializerparamstorage.so
 vendor/lib64/libswspatializeraidl_ext.so;DISABLE_DEPS
 vendor/lib64/libtensorflowlite_c.so:vendor/lib64/libtensorflowlite_c_vendor.so;FIX_SONAME
@@ -182,7 +182,7 @@ vendor/lib64/soundfx/libdlbvolaidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/libhwdapaidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/liblvacfsprocessingaidl.so
 vendor/lib64/soundfx/libmiwndnsprocessingaidl.so;DISABLE_DEPS
-vendor/lib64/soundfx/libquasar.so;DISABLE_DEPS
+vendor/lib64/soundfx/libquasar.so
 vendor/lib64/soundfx/libspatializeraidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/libswgamedapaidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/libswspatializeraidl.so;DISABLE_DEPS
