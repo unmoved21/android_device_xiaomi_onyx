@@ -2,6 +2,7 @@
 ro.product.property_source_order=odm,vendor,product,system_ext,system
 
 # Audio
+persist.vendor.audio.call.tx.ns=true
 persist.vendor.audio.fpsop.game.effect.speaker=false
 persist.vendor.audio.fpsop.game.effect.switch=true
 persist.vendor.audio.fpsop.game.effect=true
