@@ -5,6 +5,7 @@ ro.product.property_source_order=odm,vendor,product,system_ext,system
 audio.spatializer.pose_predictor_type=2
 audio.spatializer.prediction_duration_ms=50
 persist.vendor.audio.ambience_noisy_spl.threshold=80
+persist.vendor.audio.call.tx.ns=true
 persist.vendor.audio.cpuload.threshold=26
 persist.vendor.audio.effectimplenter=dolby
 persist.vendor.audio.fpsop.game.effect.speaker=false
