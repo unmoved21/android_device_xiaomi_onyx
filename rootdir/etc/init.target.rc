@@ -524,6 +524,11 @@ on boot
     chmod 664 /sys/devices/platform/soc/1d84000.ufshc/ufscld/trigger
     #END Memory_CLD
 
+    # xiaomi touch
+    chown system system /sys/class/touch/touch_dev/fod_longpress_gesture_enabled
+    chmod 0660 /sys/class/touch/touch_dev/fod_longpress_gesture_enabled
+
+
 on property:dev.bootcomplete=1
     chown system system /sys/class/xm_power/charger/smart_charge/smart_night
     chmod 0660 /sys/class/xm_power/charger/smart_charge/smart_night
