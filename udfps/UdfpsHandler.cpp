@@ -16,16 +16,9 @@
 #include <thread>
 
 #include <display/drm/mi_disp.h>
+#include <touch/xiaomi_touch.h>
 
 #include "UdfpsHandler.h"
-
-#define CMD_DATA_BUF_SIZE 256
-
-#define COMMON_DATA_CMD 0
-#define SELECT_TOUCH_ID 3
-#define SET_CUR_VALUE 0
-
-#define THP_FOD_DOWNUP_CTL 1001
 
 #define COMMAND_NIT 10
 #define PARAM_NIT_FOD 1
@@ -35,23 +28,10 @@
 #define PARAM_FOD_PRESSED 1
 #define PARAM_FOD_RELEASED 0
 
-#define TOUCH_DEV_PATH "/dev/xiaomi-touch"
-#define TOUCH_MAGIC 0x54
-
 #define DISP_FEATURE_PATH "/dev/mi_display/disp_feature"
+#define TOUCH_DEV_PATH "/dev/xiaomi-touch"
 
 #define FOD_PRESS_STATUS_PATH "/sys/class/touch/touch_dev/fod_press_status"
-
-typedef struct {
-    int8_t touch_id;
-    uint8_t cmd;
-    uint16_t mode;
-    uint16_t data_len;
-    int32_t data_buf[CMD_DATA_BUF_SIZE];
-} touch_base;
-
-#define TOUCH_IOC_SELECT_TOUCH_ID _IOW(TOUCH_MAGIC, SELECT_TOUCH_ID, int)
-#define TOUCH_IOC_COMMON_DATA _IOW(TOUCH_MAGIC, COMMON_DATA_CMD, touch_base)
 
 using ::aidl::android::hardware::biometrics::fingerprint::AcquiredInfo;
 
@@ -108,7 +88,7 @@ struct disp_base displayBasePrimary = {
         .disp_id = MI_DISP_PRIMARY,
 };
 
-touch_base touchDataPrimary = {
+common_data_t touchDataPrimary = {
         .touch_id = MI_DISP_PRIMARY,
         .cmd = SET_CUR_VALUE,
         .mode = 0,
@@ -261,7 +241,7 @@ class XiaomiOnyxUdfpsHandler : public UdfpsHandler {
     android::base::unique_fd disp_fd_;
 
     void setFingerDown(bool pressed) {
-        touch_base data = {
+        common_data_t data = {
             .mode = THP_FOD_DOWNUP_CTL,
             .data_buf = {pressed ? 1 : 0},
         };
