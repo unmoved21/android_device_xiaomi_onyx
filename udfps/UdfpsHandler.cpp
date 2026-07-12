@@ -127,14 +127,14 @@ class XiaomiOnyxUdfpsHandler : public UdfpsHandler {
 
         // Thread to notify fingeprint hwmodule about fod presses
         std::thread([this]() {
-            int fd = open(FOD_PRESS_STATUS_PATH, O_RDONLY);
+            android::base::unique_fd fd(open(FOD_PRESS_STATUS_PATH, O_RDONLY));
             if (fd < 0) {
                 LOG(ERROR) << "failed to open " << FOD_PRESS_STATUS_PATH << " , err: " << fd;
                 return;
             }
 
             struct pollfd fodPressStatusPoll = {
-                    .fd = fd,
+                    .fd = fd.get(),
                     .events = POLLERR | POLLPRI,
                     .revents = 0,
             };
