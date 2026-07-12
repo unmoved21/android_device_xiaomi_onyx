@@ -125,6 +125,7 @@ class XiaomiOnyxUdfpsHandler : public UdfpsHandler {
         touch_fd_ = android::base::unique_fd(open(TOUCH_DEV_PATH, O_RDWR));
         disp_fd_ = android::base::unique_fd(open(DISP_FEATURE_PATH, O_RDWR));
 
+        ioctl(touch_fd_.get(), TOUCH_IOC_SELECT_TOUCH_ID, MI_DISP_PRIMARY);
         // Thread to notify fingeprint hwmodule about fod presses
         std::thread([this]() {
             android::base::unique_fd fd(open(FOD_PRESS_STATUS_PATH, O_RDONLY));
@@ -260,7 +261,6 @@ class XiaomiOnyxUdfpsHandler : public UdfpsHandler {
     android::base::unique_fd disp_fd_;
 
     void setFingerDown(bool pressed) {
-        ioctl(touch_fd_.get(), TOUCH_IOC_SELECT_TOUCH_ID, MI_DISP_PRIMARY);
         touch_base data = {
             .mode = THP_FOD_DOWNUP_CTL,
             .data_buf = {pressed ? 1 : 0},
