@@ -177,6 +177,10 @@ class XiaomiOnyxUdfpsHandler : public UdfpsHandler {
         LOG(INFO) << __func__;
     }
 
+    void onAuthenticationSucceeded() { onFingerUp(); }
+
+    void onAuthenticationFailed() { onFingerUp(); }
+
   private:
     fingerprint_device_t* mDevice;
     android::base::unique_fd disp_fd_;
