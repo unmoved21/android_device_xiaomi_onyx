@@ -218,14 +218,8 @@ class XiaomiOnyxUdfpsHandler : public UdfpsHandler {
             case AcquiredInfo::TOO_BRIGHT:
             case AcquiredInfo::IMMOBILE:
             case AcquiredInfo::LIFT_TOO_SOON:
-                {
-                    struct disp_local_hbm_req displayLhbmRequest = {
-                        .base = displayBasePrimary,
-                        .local_hbm_value = LHBM_TARGET_BRIGHTNESS_OFF_FINGER_UP,
-                    };
-                    ioctl(disp_fd_.get(), MI_DISP_IOCTL_SET_LOCAL_HBM, &displayLhbmRequest);
-                    break;
-                }
+                setFingerDown(false);
+                break;
             default:
                 break;
         }
