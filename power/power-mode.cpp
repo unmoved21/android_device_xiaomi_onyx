@@ -5,12 +5,9 @@
  */
 
 #include <aidl/android/hardware/power/BnPower.h>
-#include <aidl/vendor/xiaomi/hw/touchfeature/ITouchFeature.h>
-#include <android-base/file.h>
 #include <android-base/logging.h>
-#include <android/binder_manager.h>
 
-#include <mutex>
+#include <fcntl.h>
 #include <sys/ioctl.h>
 
 #include <touch/xiaomi_touch.h>
@@ -26,30 +23,34 @@ namespace impl {
 namespace pixel {
 
 using ::aidl::android::hardware::power::Mode;
-using ::aidl::vendor::xiaomi::hw::touchfeature::ITouchFeature;
 
-static std::shared_ptr<ITouchFeature> getTouchFeatureService() {
-  static std::mutex service_mutex;
-  static std::shared_ptr<ITouchFeature> service;
+static int getTouchFd() {
+    static int fd = [] {
+        int f = open(TOUCH_DEV_PATH, O_RDWR);
+        if (f < 0) {
+            LOG(ERROR) << "Failed to open " << TOUCH_DEV_PATH;
+            return -1;
+        }
+        ioctl(f, TOUCH_IOC_SELECT_TOUCH_ID, TOUCH_ID);
+        return f;
+    }();
+    return fd;
+}
 
-  std::lock_guard<std::mutex> lock(service_mutex);
-  if (service != nullptr) {
-    return service;
-  }
+static bool setTouchModeValue(int mode, int value) {
+    int fd = getTouchFd();
+    if (fd < 0) {
+        return false;
+    }
 
-  ndk::SpAIBinder binder(AServiceManager_checkService(
-      "vendor.xiaomi.hw.touchfeature.ITouchFeature/default"));
-  if (!binder.get()) {
-    LOG(ERROR) << "Failed to get touchfeature service";
-    return nullptr;
-  }
+    common_data_t data = {};
+    data.touch_id = TOUCH_ID;
+    data.cmd = SET_CUR_VALUE;
+    data.mode = mode;
+    data.data_len = 1;
+    data.data_buf[0] = value;
 
-  service = ITouchFeature::fromBinder(binder);
-  if (service == nullptr) {
-    LOG(ERROR) << "Failed to convert touchfeature binder to interface";
-  }
-
-  return service;
+    return ioctl(fd, TOUCH_IOC_COMMON_DATA, &data) == 0;
 }
 
 bool isDeviceSpecificModeSupported(Mode type, bool* _aidl_return) {
@@ -65,55 +66,11 @@ bool isDeviceSpecificModeSupported(Mode type, bool* _aidl_return) {
 
 bool setDeviceSpecificMode(Mode type, bool enabled) {
     switch (type) {
-        case Mode::DOUBLE_TAP_TO_WAKE: {
-            int fd = open(TOUCH_DEV_PATH, O_RDWR);
-            ioctl(fd, TOUCH_IOC_SELECT_TOUCH_ID, TOUCH_ID);
-            common_data_t data = {};
-            data.touch_id = TOUCH_ID;
-            data.cmd = SET_CUR_VALUE;
-            data.mode = Touch_Doubletap_Mode;
-            data.data_len = 1;
-            data.data_buf[0] = enabled ? 1 : 0;
-            ioctl(fd, TOUCH_IOC_COMMON_DATA, &data);
-            close(fd);
-            return true;
-        }
-        case Mode::GAME: {
-          auto touchfeature = getTouchFeatureService();
-          if (touchfeature == nullptr) {
-            return false;
-          }
-
-          int32_t result = 0;
-          const auto gameStatus = touchfeature->setModeValue(
-              TOUCH_ID, Touch_Game_Mode, enabled ? 1 : 0, &result);
-          if (!gameStatus.isOk()) {
-            LOG(ERROR) << "setModeValue failed for GAME: "
-                       << gameStatus.getDescription();
-            return false;
-          }
-
-          if (result < 0) {
-            LOG(ERROR) << "setModeValue returned failure for GAME: " << result;
-            return false;
-          }
-
-          const auto superReportStatus = touchfeature->setModeValue(
-              TOUCH_ID, Touch_Super_Report, enabled ? 1 : 0, &result);
-          if (!superReportStatus.isOk()) {
-            LOG(ERROR) << "setModeValue failed for SUPER_REPORT: "
-                       << superReportStatus.getDescription();
-            return false;
-          }
-
-          if (result < 0) {
-            LOG(ERROR) << "setModeValue returned failure for SUPER_REPORT: "
-                       << result;
-            return false;
-          }
-
-          return true;
-        }
+        case Mode::DOUBLE_TAP_TO_WAKE:
+            return setTouchModeValue(Touch_Doubletap_Mode, enabled ? 1 : 0);
+        case Mode::GAME:
+            return setTouchModeValue(Touch_Game_Mode, enabled ? 1 : 0) &&
+                   setTouchModeValue(Touch_Super_Report, enabled ? 1 : 0);
         default:
             return false;
     }
