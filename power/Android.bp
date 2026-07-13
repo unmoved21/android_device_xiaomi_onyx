@@ -10,6 +10,9 @@ cc_library_static {
     whole_static_libs: [
         "vendor.xiaomi.hw.touchfeature-V1-ndk",
     ],
+    header_libs: [
+        "generated_kernel_headers",
+    ],
     shared_libs: [
         "libbase",
         "libbinder_ndk",

@@ -13,27 +13,10 @@
 #include <mutex>
 #include <sys/ioctl.h>
 
-#define CMD_DATA_BUF_SIZE 256
-#define COMMON_DATA_CMD 0
-#define SELECT_TOUCH_ID 3
-#define SET_CUR_VALUE 0
-#define TOUCH_SUPER_REPORT 202
-#define TOUCH_DOUBLETAP_MODE 14
-#define TOUCH_GAME_MODE 0
-#define TOUCH_MAGIC 0x54
+#include <touch/xiaomi_touch.h>
+
 #define TOUCH_DEV_PATH "/dev/xiaomi-touch"
 #define TOUCH_ID 0
-
-typedef struct {
-    int8_t   touch_id;
-    uint8_t  cmd;
-    uint16_t mode;
-    uint16_t data_len;
-    int32_t  data_buf[CMD_DATA_BUF_SIZE];
-} touch_data;
-
-#define TOUCH_IOC_COMMON_DATA _IOW(TOUCH_MAGIC, COMMON_DATA_CMD, touch_data)
-#define TOUCH_IOC_SELECT_TOUCH_ID _IOW(TOUCH_MAGIC, SELECT_TOUCH_ID, int)
 
 namespace aidl {
 namespace google {
@@ -85,10 +68,10 @@ bool setDeviceSpecificMode(Mode type, bool enabled) {
         case Mode::DOUBLE_TAP_TO_WAKE: {
             int fd = open(TOUCH_DEV_PATH, O_RDWR);
             ioctl(fd, TOUCH_IOC_SELECT_TOUCH_ID, TOUCH_ID);
-            touch_data data = {};
+            common_data_t data = {};
             data.touch_id = TOUCH_ID;
             data.cmd = SET_CUR_VALUE;
-            data.mode = TOUCH_DOUBLETAP_MODE;
+            data.mode = Touch_Doubletap_Mode;
             data.data_len = 1;
             data.data_buf[0] = enabled ? 1 : 0;
             ioctl(fd, TOUCH_IOC_COMMON_DATA, &data);
@@ -103,7 +86,7 @@ bool setDeviceSpecificMode(Mode type, bool enabled) {
 
           int32_t result = 0;
           const auto gameStatus = touchfeature->setModeValue(
-              TOUCH_ID, TOUCH_GAME_MODE, enabled ? 1 : 0, &result);
+              TOUCH_ID, Touch_Game_Mode, enabled ? 1 : 0, &result);
           if (!gameStatus.isOk()) {
             LOG(ERROR) << "setModeValue failed for GAME: "
                        << gameStatus.getDescription();
@@ -116,7 +99,7 @@ bool setDeviceSpecificMode(Mode type, bool enabled) {
           }
 
           const auto superReportStatus = touchfeature->setModeValue(
-              TOUCH_ID, TOUCH_SUPER_REPORT, enabled ? 1 : 0, &result);
+              TOUCH_ID, Touch_Super_Report, enabled ? 1 : 0, &result);
           if (!superReportStatus.isOk()) {
             LOG(ERROR) << "setModeValue failed for SUPER_REPORT: "
                        << superReportStatus.getDescription();
