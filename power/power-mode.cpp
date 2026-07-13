@@ -17,7 +17,7 @@
 #define COMMON_DATA_CMD 0
 #define SELECT_TOUCH_ID 3
 #define SET_CUR_VALUE 0
-#define TOUCH_ACTIVE_MODE 202
+#define TOUCH_SUPER_REPORT 202
 #define TOUCH_DOUBLETAP_MODE 14
 #define TOUCH_GAME_MODE 0
 #define TOUCH_MAGIC 0x54
@@ -115,16 +115,16 @@ bool setDeviceSpecificMode(Mode type, bool enabled) {
             return false;
           }
 
-          const auto activeStatus = touchfeature->setModeValue(
-              TOUCH_ID, TOUCH_ACTIVE_MODE, enabled ? 1 : 0, &result);
-          if (!activeStatus.isOk()) {
-            LOG(ERROR) << "setModeValue failed for ACTIVE: "
-                       << activeStatus.getDescription();
+          const auto superReportStatus = touchfeature->setModeValue(
+              TOUCH_ID, TOUCH_SUPER_REPORT, enabled ? 1 : 0, &result);
+          if (!superReportStatus.isOk()) {
+            LOG(ERROR) << "setModeValue failed for SUPER_REPORT: "
+                       << superReportStatus.getDescription();
             return false;
           }
 
           if (result < 0) {
-            LOG(ERROR) << "setModeValue returned failure for ACTIVE: "
+            LOG(ERROR) << "setModeValue returned failure for SUPER_REPORT: "
                        << result;
             return false;
           }
