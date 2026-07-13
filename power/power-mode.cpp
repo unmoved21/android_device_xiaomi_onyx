@@ -56,9 +56,8 @@ static bool setTouchModeValue(int mode, int value) {
 bool isDeviceSpecificModeSupported(Mode type, bool* _aidl_return) {
     switch (type) {
         case Mode::DOUBLE_TAP_TO_WAKE:
-        case Mode::GAME:
-          *_aidl_return = true;
-          return true;
+            *_aidl_return = true;
+            return true;
         default:
             return false;
     }
@@ -68,9 +67,6 @@ bool setDeviceSpecificMode(Mode type, bool enabled) {
     switch (type) {
         case Mode::DOUBLE_TAP_TO_WAKE:
             return setTouchModeValue(Touch_Doubletap_Mode, enabled ? 1 : 0);
-        case Mode::GAME:
-            return setTouchModeValue(Touch_Game_Mode, enabled ? 1 : 0) &&
-                   setTouchModeValue(Touch_Super_Report, enabled ? 1 : 0);
         default:
             return false;
     }
