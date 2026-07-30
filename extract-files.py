@@ -267,6 +267,12 @@ blob_fixups: blob_fixups_user_type = {
             ],
         ),
 
+    'vendor/bin/system_dlkm_modprobe.sh': blob_fixup()
+        .regex_replace(
+            r'for kernel_ver_dir in \$\{system_dlkm_dir\}/\*;',
+            'for kernel_ver_dir in ${system_dlkm_dir} ${system_dlkm_dir}/*;',
+        ),
+
     'vendor/lib64/libcom.xiaomi.grallocutils.so': blob_fixup()
         .call(
             blob_fixup_graphic_buffer_size,
