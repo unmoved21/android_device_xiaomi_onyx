@@ -37,22 +37,4 @@ start_msm_irqbalance()
                 start vendor.msm_irqbalance
          fi
 }
-
-# MIUI ADD: START
-set_page_cluster()
-{
-	devicename=`getprop ro.product.product.name`
-
-	if [ "$devicename" == "miro" ] || [ "$devicename" == "bixi" ] || [ "$devicename" == "onyx" ] || [ "$devicename" == "luming" ];
-	then
-		echo 3 > /proc/sys/vm/page-cluster
-	else
-		echo 0 > /proc/sys/vm/page-cluster
-	fi
-}
-# END
-
 start_msm_irqbalance
-# MIUI ADD:
-set_page_cluster
-
