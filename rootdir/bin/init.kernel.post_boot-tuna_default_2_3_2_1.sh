@@ -126,12 +126,6 @@ if [ -d /proc/sys/walt ]; then
 	echo 1075200 0 0 0 0 0 0 0 > /proc/sys/walt/input_boost/input_boost_freq
 	echo 40 > /proc/sys/walt/input_boost/input_boost_ms
 
-    # configure power_key boost settings
-	echo 1785600 0 2611200 0 0 2611200 0 2515200 > /proc/sys/walt/input_boost/powerkey_input_boost_freq
-        echo 400 > /proc/sys/walt/input_boost/powerkey_input_boost_ms
-
-	echo 3000 > /sys/module/perf_helper/sched_assi/sched_long_runnable
-
 	echo "walt" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 	echo "walt" > /sys/devices/system/cpu/cpufreq/policy2/scaling_governor
 	echo "walt" > /sys/devices/system/cpu/cpufreq/policy5/scaling_governor
