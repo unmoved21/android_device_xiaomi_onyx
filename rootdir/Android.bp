@@ -57,13 +57,6 @@ sh_binary {
     src: "bin/init.qcom.sh",
     vendor: true,
 }
-
-sh_binary {
-    name: "init.qcrild.sh",
-    src: "bin/init.qcrild.sh",
-    vendor: true,
-}
-
 prebuilt_etc {
     name: "charger_fw_fstab.qti",
     src: "etc/charger_fw_fstab.qti",
