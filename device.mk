@@ -204,6 +204,7 @@ PRODUCT_PACKAGES += \
     fstab.qcom
 
 PRODUCT_PACKAGES += \
+    ueventd-odm-onyx.rc \
     ueventd-odm.rc \
     ueventd.qcom.rc
 
