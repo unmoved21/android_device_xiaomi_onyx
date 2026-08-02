@@ -55,8 +55,6 @@ radio-i2c-rtc6226-qca.ko
 btfmcodec.ko
 btfm_slim_codec.ko
 bt_fm_swr.ko
-nt36532_touch.ko
-xiaomi_touch.ko
 camera.ko
 cameralog.ko
 cameramsger.ko

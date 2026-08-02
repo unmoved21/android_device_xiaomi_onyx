@@ -267,3 +267,5 @@ snd_event_dlkm.ko
 q6_notifier_dlkm.ko
 q6_pdr_dlkm.ko
 adsp_loader_dlkm.ko
+xiaomi_touch.ko
+nt36532_touch.ko
