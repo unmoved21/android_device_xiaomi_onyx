@@ -311,8 +311,6 @@ PRODUCT_PACKAGES += \
     FrameworkOverlayOnyx \
     FrameworkOverlayOnyxCN \
     FrameworkOverlayOnyxGL \
-    LineageSDKOverlayOnyx \
-    LineageSDKOverlayOnyxCN \
     LineageSettingsOverlayOnyx \
     NfcOverlayOnyx \
     SettingsOverlayOnyx \
